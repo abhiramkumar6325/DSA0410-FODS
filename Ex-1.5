@@ -1,0 +1,22 @@
+import pandas as pd
+def check_data_quality(integrated_df):
+    missing_values = integrated_df.isnull().sum()
+    duplicates = integrated_df.duplicated().sum()    
+    print("Data Quality Assessment:")
+    print("Missing Values:")
+    print(missing_values)
+    print("\nDuplicates:", duplicates)
+    print("\nOther Issues:")
+
+data = {
+    'order_id': [1, 2, 3, 4, 5, 5], 
+    'product_id': [101, 102, 103, 104, 105, 102],  
+    'product_name': ['Product A', None, 'Product C', 'Product A', 'Product D', 'Product E'],  
+    'product_price': [10.0, 20.0, 30.0, 40.0, None, 60.0]  
+}
+
+integrated_df = pd.DataFrame(data)
+integrated_df = pd.concat([integrated_df, integrated_df.iloc[2:3]], axis=0)
+print("Integrated Dataset with Missing Values and Duplicates:")
+print(integrated_df)
+check_data_quality(integrated_df)
