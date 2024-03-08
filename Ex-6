@@ -1,0 +1,19 @@
+def calculate_total_cost(prices, quantities, discount_rate, tax_rate):
+    subtotal = sum(price * quantity for price, quantity in zip(prices, quantities))
+    
+    discount_amount = subtotal * (discount_rate / 100)
+    discounted_total = subtotal - discount_amount
+    
+    tax_amount = discounted_total * (tax_rate / 100)
+    
+    total_cost = discounted_total + tax_amount
+    
+    return total_cost
+
+item_prices = [10, 20, 30]  
+item_quantities = [2, 3, 1]  
+discount_rate = 10  
+tax_rate = 8  
+
+total_cost = calculate_total_cost(item_prices, item_quantities, discount_rate, tax_rate)
+print("Total cost of the customer's purchase:", total_cost)
