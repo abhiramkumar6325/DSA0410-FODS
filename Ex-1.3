@@ -1,0 +1,31 @@
+import pandas as pd
+
+def integrate_datasets(orders_df, products_df):
+    integrated_df = pd.merge(orders_df, products_df, on='product_id', how='left')
+    
+    return integrated_df
+
+orders_data = {
+    'order_id': [1, 2, 3, 4, 5],
+    'product_id': [101, 102, 103, 104, 105],
+    'customer_id': [101, 102, 103, 104, 105],
+    'order_date': ['2023-05-15', '2023-06-20', '2023-07-10', '2023-08-05', '2023-09-12']
+}
+orders_df = pd.DataFrame(orders_data)
+
+products_data = {
+    'product_id': [101, 102, 103, 104, 105],
+    'product_name': ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
+    'price': [100, 150, 200, 120, 180]
+}
+products_df = pd.DataFrame(products_data)
+
+print("Customer Orders Dataset:")
+print(orders_df)
+print("\nProduct Dataset:")
+print(products_df)
+
+integrated_df = integrate_datasets(orders_df, products_df)
+
+print("\nIntegrated Dataset:")
+print(integrated_df)
